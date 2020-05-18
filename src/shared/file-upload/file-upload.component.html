@@ -1,0 +1,42 @@
+<div class="flex flex-col px-1">
+  <section class="flex justify-between mb-1">
+    <button mat-raised-button [matMenuTriggerFor]="menu" color="primary">
+      <mat-icon aria-hidden="false" aria-label="Choose file">attachment</mat-icon>
+      <span class="ml-1">Choose</span>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item class="relative overflow-hidden">
+        <input type="file" class="opacity-0 absolute top-0 left-0 z-2" (change)="onFileChoosen($event)"
+          [multiple]="multiple" />
+        <span class="ml-1">Files</span>
+      </button>
+      <button mat-menu-item class="relative overflow-hidden">
+        <input type="file" class="opacity-0 absolute top-0 left-0 z-2" (change)="onFileChoosen($event)"
+          [multiple]="multiple" webkitDirectory />
+        <span class="ml-1">Folder</span></button>
+    </mat-menu>
+
+    <div class="mr-1"></div>
+    <button mat-raised-button color="primary" [disabled]="disableUpload">
+      <mat-icon aria-hidden="false" aria-label="Upload file">cloud_upload</mat-icon>
+      <span class="ml-1">Upload</span>
+    </button>
+    <div class="mr-1"></div>
+    <button mat-raised-button color="primary" [disabled]="disableUpload" (click)="onClearAll()">
+      <mat-icon aria-hidden="false" aria-label="Cancel">cancel</mat-icon>
+      <span class="ml-1">Clear All</span>
+    </button>
+  </section>
+  <ul class="flex flex-col">
+    <li *ngFor="let file of files; let i = index"
+      class="flex justify-between align-center w-full shadow border-radius mb-1">
+      <div class="flex justify-start px-1">
+        <div class="mr-1">Icon</div>
+        <span class="filename">{{file.name}}</span>
+      </div>
+      <button mat-raised-button color="primary" (click)="onRemoveFile(i)">
+        <mat-icon aria-hidden="false" aria-label="Cancel">cancel</mat-icon>
+      </button>
+    </li>
+  </ul>
+</div>

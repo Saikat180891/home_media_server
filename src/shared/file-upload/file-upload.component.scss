@@ -1,0 +1,11 @@
+input[type="file"] {
+  font-size: 3rem;
+}
+
+.filename {
+  display: block;
+  width: 17rem;
+  overflow: hidden;
+  height: 1.2rem;
+  text-overflow: ellipsis;
+}
